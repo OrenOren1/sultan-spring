@@ -23,5 +23,5 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: set up MySql instance
-      run: docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:5.7.8
+      run: docker-compose up -d
     
