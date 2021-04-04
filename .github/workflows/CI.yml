@@ -25,7 +25,8 @@ jobs:
     - name: set up MySql instance
       run: docker-compose up -d
   
-  test:    
+  test: 
+    needs: [build]
     runs-on: ubuntu-latest
     
     steps:
