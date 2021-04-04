@@ -22,6 +22,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: run pet spring  
+      run:   ./mvnw spring-boot:run
     - name: set up MySql instance
       run: docker-compose up -d
   
