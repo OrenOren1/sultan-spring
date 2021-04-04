@@ -24,4 +24,10 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: set up MySql instance
       run: docker-compose up -d
+  
+  test:    
+    runs-on: ubuntu-latest
     
+    steps:
+      - name: check http call
+        run:  curl localhost:8080 | grep "Welcome"
