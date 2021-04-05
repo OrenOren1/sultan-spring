@@ -13,6 +13,8 @@ git clone https://github.com/OrenOren1/sultan-spring.git
 set up env labels as secrets: 
 
 settings>secrets>New repsitory secrets
+
+configure them according to docker-compose.yml .
 ```
 
 DB_NAME
@@ -23,11 +25,6 @@ DB_PORT
 
 DB_USER
 
-HOST
-
-SSH_PASSWORD
-
-SSH_USER
 ```
 
 ## GitHub actions defenition
@@ -36,3 +33,4 @@ go to Actions > NEW Workflow
 copy content of ./workflow/CI_petclinic.yml
 
 commit 
+
