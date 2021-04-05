@@ -65,7 +65,17 @@ jobs:
           mysql --version
           sudo apt-get install -y mysql-client
           #mysql --host 127.0.0.1 --port ${{ secrets.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
-
+          
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DB_CONNECTION: mysql
+          DB_DATABASE: ${{ secrets.DB_NAME }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          php artisan migrate
+          vendor/phpunit/phpunit/phpunit
   deploy:
     runs-on: ubuntu-latest
     name: Deploy the JAR file to the remote server
