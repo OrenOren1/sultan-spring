@@ -64,22 +64,8 @@ jobs:
         run: |
           mysql --version
           sudo apt-get install -y mysql-client
-          #mysql --host 127.0.0.1 --port ${{ secrets.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
-      - name: Laravel Setup
-        run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-          php artisan key:generate
-          chmod -R 777 storage bootstrap/cache    
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DB_CONNECTION: mysql
-          DB_DATABASE: ${{ secrets.DB_NAME }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        run: |
-          php artisan migrate
-          vendor/phpunit/phpunit/phpunit
+          #mysql --host=0.0.0.0 --port ${{ secrets.DB_PORT }} --user=${{ secrets.DB_USER }} --password${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
+      
   deploy:
     runs-on: ubuntu-latest
     name: Deploy the JAR file to the remote server
