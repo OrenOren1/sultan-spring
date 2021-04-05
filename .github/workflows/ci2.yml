@@ -67,7 +67,6 @@ jobs:
           #mysql --host 127.0.0.1 --port ${{ secrets.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
       - name: Laravel Setup
         run: |
-          cp .env.ci .env
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
           php artisan key:generate
           chmod -R 777 storage bootstrap/cache    
