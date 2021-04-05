@@ -60,11 +60,11 @@ jobs:
         
       - name: set up MySql instance
         run: docker-compose up -d 
-      #- name: Verify MySQL connection
-       # run: |
-        #  mysql --version
-         # sudo apt-get install -y mysql-client
-          #mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          #mysql --host 127.0.0.1 --port ${{ secret.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
 
   deploy:
     runs-on: ubuntu-latest
