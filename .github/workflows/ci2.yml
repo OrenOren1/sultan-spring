@@ -58,6 +58,14 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         shell: bash
         
+      - name: set up MySql instance
+        run: docker-compose up -d 
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+
   deploy:
     runs-on: ubuntu-latest
     name: Deploy the JAR file to the remote server
