@@ -64,7 +64,7 @@ jobs:
         run: |
           mysql --version
           sudo apt-get install -y mysql-client
-          #mysql --host 127.0.0.1 --port ${{ secret.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
+          #mysql --host 127.0.0.1 --port ${{ secrets.DB_PORT }} -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES"
 
   deploy:
     runs-on: ubuntu-latest
